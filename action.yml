@@ -1,0 +1,61 @@
+name: 'github-sfdx-deploy-to-org'
+description: 'Deploy a Salesforce project from GitHub to Salesforce.'
+inputs:
+  login-url:
+    description: 'Salesforce login url'
+    required: true
+    default: 'https://test.salesforce.com/'
+
+  cert-path:
+    description: 'path to encrypted certificate'
+    required: true
+
+  decryption-key:
+    description: 'key to decrypt certificate'
+    required: true
+
+  decryption-iv:
+    description: 'iv to be used to decrypt certificate'
+    required: true
+
+  sf-consumer-key:
+    description: 'consumer key of SF connected app'
+    required: true
+
+  sf-username:
+    description: 'username used to login to SF'
+    required: true
+
+  test-level:
+    description: 'test level of deployment'
+    required: false
+    default: RunLocalTests
+
+  tests-to-run:
+    description: 'tests to run when testlevel is RunSpecifiedTests'
+    required: false
+
+  deploy-wait:
+    description: 'wait time for deployment'
+    required: false
+    default: '60'
+
+  source-path:
+    description: 'path of force app'
+    required: false
+    default: 'force-app/main/default'
+
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - '${{inputs.login-url}}'
+    - '${{inputs.cert-path}}'
+    - '${{inputs.decryption-key}}'
+    - '${{inputs.decryption-iv}}'
+    - '${{inputs.sf-consumer-key}}'
+    - '${{inputs.sf-username}}'
+    - '${{inputs.test-level}}'
+    - '${{inputs.tests-to-run}}'
+    - '${{inputs.deploy-wait}}'
+    - '${{inputs.source-path}}'
