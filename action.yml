@@ -38,7 +38,7 @@ inputs:
   deploy-wait:
     description: 'wait time for deployment'
     required: false
-    default: '60'
+    default: '33'
 
   source-path:
     description: 'path of force app'
