@@ -29,6 +29,11 @@ echo ":: Extract sfdx cli to directory"
 # Extract the installer archive without the top-level directory
 tar xJf sfdx-linux-x64.tar.xz -C ~/sfdx --strip-components 1
 
+# https://medium.com/@mohitkumarsrivastav/installing-sfdx-cli-on-alpine-linux-9034953745b9
+rm ./sfdx/bin/node
+
+ln -s /usr/local/bin/node ./sfdx/bin/node
+
 # Add the sfdx command to the path (this is a GitHub-specific example)
 echo "$HOME/sfdx/bin" >> $GITHUB_PATH
 
