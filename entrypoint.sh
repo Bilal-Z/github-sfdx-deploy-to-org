@@ -17,13 +17,15 @@ SRC_PATH="${10}"
 
 # https://developer.salesforce.com/blogs/2022/01/set-up-continuous-integration-for-your-salesforce-projects
 
-echo ":: Install sfdx cli"
+echo ":: Download sfdx cli"
 # Download the Salesforce CLI installer
 wget https://developer.salesforce.com/media/salesforce-cli/sfdx/channels/stable/sfdx-linux-x64.tar.xz
 
+echo ":: Make sfdx directory"
 # Create the install directory
 mkdir ~/sfdx
 
+echo ":: Extract sfdx cli to directory"
 # Extract the installer archive without the top-level directory
 tar xJf sfdx-linux-x64.tar.xz -C ~/sfdx --strip-components 1
 
@@ -35,7 +37,6 @@ echo "$HOME/sfdx/bin" >> $GITHUB_PATH
 ~/sfdx/bin/sfdx version
 
 echo ":: Decrypt Certificate"
-
 openssl enc -nosalt -aes-256-cbc -d -in "$CERT_PATH" -out server.key -base64 -K "$DECRYPT_KEY" -iv "$DECRYPT_IV"
 
 echo ":: Authenticating into org"
