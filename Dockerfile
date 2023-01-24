@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-RUN apk add --no-cache git openssh-client openssl nodejs npm
+RUN apk add --no-cache bash git openssh-client openssl nodejs npm
 
 COPY entrypoint.sh /entrypoint.sh
 
