@@ -48,4 +48,4 @@ echo ":: Authenticating into org"
 ~/sfdx/bin/sfdx force:auth:jwt:grant --instanceurl "$LOGIN_URL" --clientid "$CONSUMER_KEY" --jwtkeyfile server.key --username "$USERNAME" --setalias sfdc
 
 echo ":: Deploy to org"
-~/sfdx/bin/sfdx force:source:deploy --wait "$DEPLOY_WAIT" --sourcepath "$SRC_PATH" --testlevel "$TEST_LEVEL" --targetusername sfdc
+~/sfdx/bin/sfdx force:source:deploy --wait "$DEPLOY_WAIT" --sourcepath "$SRC_PATH" --testlevel "$TEST_LEVEL" --json --targetusername sfdc
